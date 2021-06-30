@@ -1,0 +1,204 @@
+@use '../abstracts/' as a;
+
+%align-center {
+  display: flex;
+  align-items: center;
+}
+
+body.active {
+    @include a.tablet {
+    overflow-y: hidden;
+  }  
+}
+
+.hero {
+  background-image: linear-gradient(to bottom right, rgb(59, 10, 95), rgb(162, 71, 226), rgb(118, 20, 189));
+  background-size: cover;
+  background-repeat: no-repeat;  
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+    height: 90vh;
+    width: 100%;
+    max-width: 1200px;
+
+    z-index: 1;
+
+    @include a.tablet {
+      grid-template-columns: 1fr;
+      height: 100%;
+      width: 100%;
+    }
+
+    &--left {
+      width: 100%;
+      line-height: 1.2;
+
+      @include a.tablet {
+        padding: 5rem 0;
+      }
+
+      @include a.mobile {
+        line-height: 1.5;
+      }
+    }
+
+    &--left h1 {
+      font-size: 4rem;
+      color: a.$lime;
+
+      @include a.mobile {
+        font-size: 1.5rem;
+      }
+    }
+    &--left h2 {
+      font-size: 3.5rem;
+      color: a.$dark;
+      margin-top: 0.75rem;
+
+      @include a.mobile {
+        font-size: 2rem;
+      }
+    }
+    &--left p {
+      font-size: 2rem;
+      color: a.$lime;
+      margin-top: 1rem;
+
+      @include a.mobile {
+        font-size: 1.5rem;
+      }
+    }
+    &--right {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+        /* https://codepen.io/lemmin/pen/MWbGjxj */
+        .yinyang {
+          position: relative;
+
+          font-family: sans-serif;
+          background: linear-gradient(to right, a.$lime, a.$lime 50%, a.$purple 50%, a.$purple);
+          width: 25vw;
+          height: 25vw;
+          font-size: 12.5vw;
+
+          /* */
+          border-radius: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          animation: spin 12s infinite linear;
+          box-shadow: 0 0 75px -25px a.$lime;
+          @include a.mobile {
+            bottom: 40%;
+            left: 10%;
+
+            /* Adjust the following three values to change the size */
+            width: 50vw;
+            height: 50vw;
+            font-size: 25vw;      
+          }
+          @include a.tablet {
+            bottom: 30%;
+            left: 10%;
+
+            /* Adjust the following three values to change the size */
+            width: 50vw;
+            height: 50vw;
+            font-size: 25vw;      
+          }          
+
+          .yin, .yang {
+            background: linear-gradient(to left, a.$lime, a.$lime 50%, a.$purple 50%, a.$purple);
+            width: 50%;
+            height: 50%;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: spin 6s infinite linear reverse;
+            
+            &::before, &::after {
+              content: '\2022';
+              background-color: a.$purple;
+              width: 50%;
+              height: 50%;
+              border-radius: 50%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: a.$lime;
+            }
+            &::after {
+              background-color: a.$lime;
+              color: a.$purple;         
+            }
+          }  
+        }
+      }
+    
+    
+    &--btn {
+      position: relative;
+      font-size: 1rem;
+      background: a.$lime;
+      padding: 14px 32px;
+      border: none;
+      outline:  none;
+      border-radius: 16px;
+      color: a.$light;
+      margin-top: 2rem;
+      cursor: pointer;
+
+      transition: all .3s;
+    }
+
+    &--btn a {
+      position: relative;
+      color: a.$dark;
+      text-decoration: none;
+      z-index: 2;
+    }
+
+    &--btn:after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      color: a.$light;
+      background: a.$orangered;
+      transition: all .3s;
+      border: none;
+      outline: none;
+      border-radius: 16px;
+    }
+
+    &--btn:hover:after {
+      width: 100%;
+    }
+
+    &--img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

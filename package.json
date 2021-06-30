@@ -1,0 +1,23 @@
+{
+  "name": "sass-bp",
+  "version": "0.0.1",
+  "description": "a sass boilerplate with @use instead of @import",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass app/src/scss:app/dist/css && gulp",
+    "watch": "sass --watch app/src/scss:app/dist/css"
+  },
+  "author": "oje-edu",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^9.0.0",
+    "browser-sync": "^2.26.14",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "sass": "^1.32.8"
+  }
+}

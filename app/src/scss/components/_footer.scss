@@ -1,0 +1,96 @@
+@use '../abstracts/' as a;
+
+
+.footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    color: a.$light;
+    background: a.$lime;
+    padding: 0.5rem calc((100vw - 1200px) / 2);
+
+  @include a.tablet {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    color: a.$light;
+  }
+
+  h1 {
+  color: a.$purple;
+} 
+
+
+  &__wrapper {
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    @include a.pc {
+      padding: 0.5rem calc((100vw - 1200px) / 2);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  &__desc {
+    padding: 1rem;
+
+    h1 {
+      margin-bottom: 1rem;
+      font-size: 3.5rem;
+    }
+
+    p {
+      margin-bottom: 0.5rem;
+      font-size: 2.5rem;
+      color: a.$dark;
+    }
+
+    @include a.pc { 
+      h1 {
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+    }
+
+
+    #phone {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }    
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  &__title {
+    color:a.$dark;
+
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: a.$light;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    transition: all 1s ease-in-out;
+
+    @include a.pc { 
+      font-size: 1.4rem;
+    }
+  
+    &:hover {
+      color: a.$purple;
+    }    
+  }    
+}
+
+

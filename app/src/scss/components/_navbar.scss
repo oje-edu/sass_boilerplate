@@ -1,0 +1,125 @@
+@use '../abstracts/' as a;
+
+%align-center {
+  display: flex;
+  align-items: center;
+}
+
+.navbar {
+  position: relative;
+  background: a.$lime;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem calc((100vw - 1200px) / 2);
+
+
+  &__logo {
+    color: a.$light;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    padding-left: 1rem;
+    @extend %align-center;
+  }
+
+  .bar {
+    opacity: 0;
+
+    @include a.tablet {
+    opacity: 1;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all .3s ease-in-out;
+    background: a.$light;
+    display: block;
+    cursor: pointer;
+    }
+  }
+  #mobile-menu {
+    position: absolute;
+    top: 15%;
+    right: 5%;
+    transform: translate(5%, 20%);
+
+    &.is-active {
+      .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }          
+    }
+  
+  }        
+
+  &__menu {
+    @extend %align-center;
+    list-style: none;
+    text-align: center;
+    margin-right: 24px;
+
+
+    @include a.tablet {
+      position: absolute;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, 100px);
+      top: -1000px;
+      
+      &.active {
+        height: 100vh;
+        top: 100%;
+        background: a.$dark;
+        opacity: 1;
+        font-size: 1.5rem;
+
+        z-index: 99;        
+      }
+    }
+
+    &--links {
+      color: a.$light;
+      @extend %align-center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 0 1rem;
+
+      &:hover {
+        color: a.$purple;
+        transition: all 2s ease;
+      }
+
+      @include a.tablet {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    #button {
+      height: 60px;
+      padding: 2px 24px;
+      border: none;
+      outline: none;
+      border-radius: 4px;
+      background: a.$purple;
+      margin-left: 16px;
+      color: a.$light;
+
+      &:hover {
+        background: a.$orangered;
+        transition: all 1s ease-in;
+      }
+      @include a.tablet {
+        display: none;
+      }
+    }
+  }
+}
